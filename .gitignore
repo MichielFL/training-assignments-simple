@@ -9,3 +9,5 @@ src/csharp/obj
 src/test/csharp/bin
 src/test/csharp/obj
 TestResult.xml
+/maintainabilitybook.iml
+/.idea/
