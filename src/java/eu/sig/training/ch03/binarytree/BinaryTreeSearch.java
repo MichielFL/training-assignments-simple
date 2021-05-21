@@ -5,24 +5,16 @@ public class BinaryTreeSearch {
     // tag::calculateDepth[]
     public static int calculateDepth(BinaryTreeNode<Integer> node, int nodeValue) {
         int depth = 0;
-        if (node.getValue() == nodeValue) {
-            return depth;
+        if (node.getValue() == nodeValue) return depth;
+        return nodeValue < node.getValue() ? searchBranch(nodeValue, node.getLeft())
+                : searchBranch(nodeValue, node.getRight());
+    }
+
+    private static int searchBranch(int nodeValue, BinaryTreeNode<Integer> side) {
+        if (side == null) {
+            throw new TreeException("Value not found in tree!");
         } else {
-            if (nodeValue < node.getValue()) {
-                BinaryTreeNode<Integer> left = node.getLeft();
-                if (left == null) {
-                    throw new TreeException("Value not found in tree!");
-                } else {
-                    return 1 + calculateDepth(left, nodeValue);
-                }
-            } else {
-                BinaryTreeNode<Integer> right = node.getRight();
-                if (right == null) {
-                    throw new TreeException("Value not found in tree!");
-                } else {
-                    return 1 + calculateDepth(right, nodeValue);
-                }
-            }
+            return 1 + calculateDepth(side, nodeValue);
         }
     }
     // end::calculateDepth[]
