@@ -4,10 +4,16 @@ import java.awt.Graphics;
 import java.util.List;
 
 public class BoardPanel {
-    @SuppressWarnings("unused")
-    // tag::render[]
     /**
+     * Renders a single square on the given graphics context on the specified
+     * rectangle.
      *
+     * @param square
+     *            The square to render.
+     * @param g
+     *            The graphics context to draw on.
+     * @param rectangle
+     *            The rectangle on which the graphic is rendered.
      */
     private void render(Square square, Graphics g, Rectangle rectangle) {
         square.getSprite().draw(g, rectangle);
@@ -15,7 +21,6 @@ public class BoardPanel {
             unit.getSprite().draw(g, rectangle);
         }
     }
-    // end::render[]
 
     private class Sprite {
         @SuppressWarnings("unused")
