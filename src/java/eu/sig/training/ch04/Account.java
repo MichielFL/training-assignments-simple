@@ -1,13 +1,8 @@
 package eu.sig.training.ch04;
 
 public class Account {
-    @SuppressWarnings("unused")
+    private static final float INTEREST_PERCENTAGE = 0.00f;
     private final Money balance = new Money();
-    private float interestPercentage;
-
-    public Account(float interestPercentage) {
-        this.interestPercentage = interestPercentage;
-    }
 
     public static CheckingAccount findAcctByNumber(String number) {
         return new CheckingAccount();
@@ -29,9 +24,8 @@ public class Account {
         CheckingAccount acct = Account.findAcctByNumber(counterAccount);
         return new Transfer(this, acct, amount);
     }
-
-    public void addInterest(float interestPercentage) {
-        Money interest = balance.multiply(interestPercentage);
+    public void addInterest() {
+        Money interest = balance.multiply(INTEREST_PERCENTAGE);
         if (interest.greaterThan(0)) {
             balance.add(interest);
         } else {
