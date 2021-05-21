@@ -7,12 +7,12 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class AccountsTest {
+public class AccountTest {
 
     @Test
     public void testIsValidNormalCases() {
-        assertTrue("isValid(\"123456789\") should return true", Accounts.isValid("123456789"));
-        assertFalse("isValid(\"123456788\") should return false", Accounts.isValid("123456788"));
+        assertTrue("isValid(\"123456789\") should return true", Account.isValid("123456789"));
+        assertFalse("isValid(\"123456788\") should return false", Account.isValid("123456788"));
     }
 
     // end::AccountsTest[]
@@ -21,7 +21,7 @@ public class AccountsTest {
     // tag::testEmptyString[]
     @Test
     public void testEmptyString() {
-        assertFalse(Accounts.isValid(""));
+        assertFalse(Account.isValid(""));
     }
     // end::testEmptyString[]
 
@@ -42,31 +42,31 @@ public class AccountsTest {
     @Test
     @Ignore
     public void testIsValidLetters() {
-        assertFalse("isValid(\"abcdefghi\") should return false", Accounts.isValid("ABCDEFGHK"));
+        assertFalse("isValid(\"abcdefghi\") should return false", Account.isValid("ABCDEFGHK"));
     }
 
     @Test
     @Ignore
     public void testIsValidNonNormal() {
-        assertFalse("Empty string is not a valid number", Accounts.isValid(""));
+        assertFalse("Empty string is not a valid number", Account.isValid(""));
     }
 
     @Test
     @Ignore
     public void testIsValidNonNumeric() {
-        assertFalse("Non-numerics always invalid", Accounts.isValid("12.34.56."));
+        assertFalse("Non-numerics always invalid", Account.isValid("12.34.56."));
     }
 
     @Test
     @Ignore
     public void testIsValidToolong() {
-        assertFalse("More than 9 digits is always invalid", Accounts.isValid("1234567890"));
+        assertFalse("More than 9 digits is always invalid", Account.isValid("1234567890"));
     }
 
     @Test
     @Ignore
     public void testIsValidTooshort() {
-        assertFalse("Less than 9 digits is always invalid", Accounts.isValid("12345677"));
+        assertFalse("Less than 9 digits is always invalid", Account.isValid("12345677"));
     }
 
 }
