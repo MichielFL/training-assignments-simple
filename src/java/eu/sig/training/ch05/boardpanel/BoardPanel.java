@@ -4,19 +4,24 @@ import java.awt.*;
 import java.util.List;
 
 public class BoardPanel {
+    private Square square;
+
+    public BoardPanel(Square square) {
+        this.square = square;
+    }
+
     /**
      * Renders a single square on the given graphics context on the specified
      * rectangle.
      *
-     * @param square
-     *            The square to render.
      * @param g
      *            The graphics context to draw on.
      * @param rectangle
      *            The rectangle on which the graphic is rendered.
      */
-    private void render(Square square, Graphics g, Rectangle rectangle) {
+    private void render(Graphics g, Rectangle rectangle) {
         square.getSprite().draw(g, rectangle);
+        assert square.getOccupants() != null;
         for (Unit unit : square.getOccupants()) {
             unit.getSprite().draw(g, rectangle);
         }
