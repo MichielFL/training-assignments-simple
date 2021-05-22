@@ -1,6 +1,6 @@
 package eu.sig.training.ch05.boardpanel;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.List;
 
 public class BoardPanel {
@@ -41,6 +41,18 @@ public class BoardPanel {
             return null;
         }
 
+    }
+
+    private class Rectangle {
+        private Point position;
+        private int width;
+        private int height;
+
+        public Rectangle(Point position, int width, int height) {
+            this.position = position;
+            this.width = width;
+            this.height = height;
+        }
     }
 
 }
