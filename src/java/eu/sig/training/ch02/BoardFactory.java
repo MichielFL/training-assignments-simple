@@ -17,20 +17,25 @@ public class BoardFactory {
     Board create() {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                Square square = grid[x][y];
-                assert Direction.values() != null;
-                for (Direction dir : Direction.values()) {
-                    setLink(square, dir, x, y);
-                }
+                createBoard(x, y);
             }
         }
         return this.board;
     }
-    private void setLink(Square square, Direction dir, int x, int y) {
+
+    private void createBoard(int x, int y) {
+        Square square = grid[x][y];
+        assert Direction.values() != null;
+        for (Direction dir : Direction.values()) {
+            Square neighbour = getNeigbour(dir, x, y);
+            square.link(neighbour, dir);
+        }
+    }
+
+    private Square getNeigbour(Direction dir, int x, int y) {
         int dirX = (width + x + dir.getDeltaX()) % width;
         int dirY = (height + y + dir.getDeltaY()) % height;
-        Square neighbour = grid[dirX][dirY];
-        square.link(neighbour, dir);
+        return grid[dirX][dirY];
     }
 }
 
