@@ -1,13 +1,16 @@
 package eu.sig.training.ch05.buildandsendmail;
 
 public class BuildAndSendMail {
+    private Mail mail;
+    private MailMan mailMan;
 
-    public void buildAndSendMail(MailMan m, MailAddress address, MailBody mailBody){
+    public BuildAndSendMail(Mail mail, MailMan mailMan) {
+        this.mail = mail;
+        this.mailMan = mailMan;
+    }
 
-        // Format the message given the content type and raw message
-        Mail mail = new Mail(address, mailBody);
-        // Send message
-        m.send(mail);
+    public void sendMail(){
+        mailMan.send(mail);
     }
 
 
@@ -60,5 +63,4 @@ public class BuildAndSendMail {
     private class MailMessage {
 
     }
-
 }
